@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     stages {
@@ -20,7 +21,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Activating virtual environment..."
-                bash -c "source venv/bin/activate && echo Running flask application && python app.py &"
+                bash -c "source venv/bin/activate && echo Running flask application && nohup python app.py > flask.log 2>&1 &"
                 '''
             }
         }
