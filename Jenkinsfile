@@ -9,19 +9,18 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
+                echo "Setting up Python virtual environment..."
                 python3 -m venv venv
-                source venv/bin/activate
-                pip install -r requirements.txt
+                echo "Activating virtual environment..."
+                bash -c "source venv/bin/activate && pip install -r requirements.txt"
                 '''
             }
         }
         stage('Run Flask App') {
             steps {
                 sh '''
-                "Activating virtual environment"
-                source venv/bin/activate
-                echo "Running flask application"
-                python app.py &
+                echo "Activating virtual environment..."
+                bash -c "source venv/bin/activate && echo Running flask application && python app.py &"
                 '''
             }
         }
