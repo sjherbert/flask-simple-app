@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git clone 'https://github.com/sjherbert/flask-simple-app.git'
+                git branch: 'main', url: 'https://github.com/sjherbert/flask-simple-app.git'
             }
         }
         stage('Install Dependencies') {
